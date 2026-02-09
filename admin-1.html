@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 ระบบหลังร้าน</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🍳 ระบบหลังร้าน</h1>
+    <p>รายการออเดอร์จากลูกค้า</p>
+</header>
+
+<div id="order-list" style="padding:20px;"></div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+function renderOrders() {
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const container = document.getElementById("order-list");
+    container.innerHTML = "";
+
+    if (orders.length === 0) {
+        container.innerHTML = "<p>ยังไม่มีออเดอร์</p>";
+        return;
+    }
+
+    orders.forEach((order) => {
+        let itemsHTML = "";
+        let total = 0;
+
+        for (let id in order.items) {
+            const item = order.items[id];
+            total += item.price * item.qty;
+            itemsHTML += `<li>${item.name} x ${item.qty}</li>`;
+        }
+
+        container.innerHTML += `
+        <div class="menu-card" style="margin-bottom:20px;">
+            <h3>🧾 ออเดอร์ #${order.id}</h3>
+            <p><strong>โต๊ะ:</strong> ${order.table || "ไม่ระบุ"}</p>
+
+            <ul>${itemsHTML}</ul>
+            <p><strong>ยอดรวม:</strong> ${total.toFixed(2)} บาท</p>
+            <p><strong>สถานะ:</strong> ${order.status}</p>
+
+            <div style="display:flex; gap:10px; margin-top:10px;">
+                ${
+                    order.status === "รอร้านรับออเดอร์"
+                    ? `<button onclick="acceptOrder(${order.id})">รับออเดอร์</button>`
+                    : `<button disabled>🍽️ รอเสิร์ฟ</button>`
+                }
+                <button onclick="deleteOrder(${order.id})" style="background:#d9534f;">
+                    ❌ ลบออเดอร์
+                </button>
+            </div>
+        </div>
+        `;
+    
+
+
+
+    });
+}
+
+function acceptOrder(orderId) {
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    const order = orders.find(o => o.id === orderId);
+    if (order) {
+        order.status = "รอเสิร์ฟ";
+        localStorage.setItem("orders", JSON.stringify(orders));
+        renderOrders();
+    }
+}
+
+
+
+renderOrders();
+
+function deleteOrder(orderId) {
+    if (!confirm("ต้องการลบออเดอร์นี้หรือไม่?")) return;
+
+    orders = orders.filter(order => order.id !== orderId);
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+    renderOrders();
+}
+
+
+
+</script>
+
+</body>
+</html>

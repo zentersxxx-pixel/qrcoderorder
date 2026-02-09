@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ IMJUNGRESTERRUN QR Code</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <header>
+        <p style="text-align:center; font-size:18px;">
+    🍽️ โต๊ะหมายเลข: <strong id="table-number"></strong>
+        </p>
+
+        <h1>ระบบสั่งอาหารออนไลน์ (QR Menu)</h1>
+        <p>สแกน QR Code แล้วเลือกเมนูโปรดของคุณได้เลย</p>
+    </header>
+
+<nav>
+  <a href="index.html">หน้าแรก</a> |
+  <a href="cart.html">ตะกร้า</a> |
+  <a href="summary.html">สรุปรายการ</a> |
+</nav>
+
+
+
+
+
+
+
+
+
+
+    <h2>🍛 เมนูอาหารคาว (Main Dishes)</h2>
+    <div class="menu-category" id="main-dishes">
+        
+        <div class="menu-card" data-id="1" data-name="ข้าวผัดกะเพรา" data-price="60">
+            <img src="https://i.pinimg.com/1200x/29/12/1a/29121acd44dd8797fc9dfd17c76f5eb1.jpg" alt="ข้าวผัดกะเพรา">
+            <h3>ข้าวผัดกะเพรา</h3>
+            <p>ราคา: <span class="price">60.00</span> บาท</p>
+            <button onclick="addToCart(1)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="2" data-name="ก๋วยเตี๋ยวเรือ" data-price="55">
+            <img src="https://i.pinimg.com/1200x/4b/fc/01/4bfc011a368245f5ba309c11f442fd99.jpg" alt="ก๋วยเตี๋ยวเรือ">
+            <h3>ก๋วยเตี๋ยวเรือ</h3>
+            <p>ราคา: <span class="price">55.00</span> บาท</p>
+            <button onclick="addToCart(2)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="3" data-name="ข้าวขาหมู" data-price="70">
+            <img src="https://i.pinimg.com/1200x/38/d7/35/38d735d3077a4f6f73c7d562a0d7ea6d.jpg" alt="ข้าวขาหมู">
+            <h3>ข้าวขาหมู</h3>
+            <p>ราคา: <span class="price">70.00</span> บาท</p>
+            <button onclick="addToCart(3)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="4" data-name="ส้มตำไทย" data-price="50">
+            <img src="https://i.pinimg.com/736x/5b/1c/fa/5b1cfaaa9f6d0b15f76ee8a449540a0d.jpg" alt="ส้มตำไทย">
+            <h3>ส้มตำไทย</h3>
+            <p>ราคา: <span class="price">50.00</span> บาท</p>
+            <button onclick="addToCart(4)">เพิ่มลงตะกร้า</button>
+        </div>
+    </div>
+
+    <h2>🍰 เมนูของหวาน (Desserts)</h2>
+    <div class="menu-category" id="desserts">
+        
+        <div class="menu-card" data-id="5" data-name="บานอฟฟี่" data-price="120">
+            <img src="https://i.pinimg.com/1200x/84/b3/7b/84b37b5f53260455fdcc5482d3455e92.jpg" alt="บิงซูมะม่วง">
+            <h3>บานอฟฟี่</h3>
+            <p>ราคา: <span class="price">120.00</span> บาท</p>
+            <button onclick="addToCart(5)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="6" data-name="ซอฟเค้ก" data-price="35">
+            <img src="https://i.pinimg.com/736x/61/7b/de/617bdeb09143f7112bafff608e7d9cda.jpg" alt="ขนมปังปิ้งเนยนม">
+            <h3> ซอฟเค้ก</h3>
+            <p>ราคา: <span class="price">35.00</span> บาท</p>
+            <button onclick="addToCart(6)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="7" data-name="โมจิเลิฟเวอร์" data-price="45">
+            <img src="https://i.pinimg.com/736x/f2/03/72/f2037218cbffb40241530fe221e4746a.jpg" alt="ไอศกรีมวานิลลา">
+            <h3>โมจิเลิฟเวอร์</h3>
+            <p>ราคา: <span class="price">45.00</span> บาท</p>
+            <button onclick="addToCart(7)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="8" data-name="เค้กช็อกโกแลต" data-price="85">
+            <img src="https://i.pinimg.com/1200x/6b/66/3e/6b663e3ceb545c01d2f203b171de8e94.jpg" alt="เค้กช็อกโกแลต">
+            <h3>เค้กช็อกโกแลต</h3>
+            <p>ราคา: <span class="price">85.00</span> บาท</p>
+            <button onclick="addToCart(8)">เพิ่มลงตะกร้า</button>
+
+        </div>
+    </div>
+
+    <h2>🍹 เมนูเครื่องดื่ม (Drinks)</h2>
+    <div class="menu-category" id="drinks">
+        
+        <div class="menu-card" data-id="9" data-name="ชานมไข่มุก" data-price="40">
+            <img src="https://i.pinimg.com/736x/22/47/3e/22473e28e4e4970909f35785d93a0561.jpg" alt="ชานมไข่มุก">
+            <h3>ชานมไข่มุก</h3>
+            <p>ราคา: <span class="price">40.00</span> บาท</p>
+            <button onclick="addToCart(9)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="10" data-name="กาแฟเย็น" data-price="45">
+            <img src="https://i.pinimg.com/736x/c5/32/6c/c5326c019df501cd2360f76f60d8132a.jpg" alt="กาแฟเย็น">
+            <h3>กาแฟเย็น</h3>
+            <p>ราคา: <span class="price">45.00</span> บาท</p>
+            <button onclick="addToCart(10)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="11" data-name="น้ำเปล่า" data-price="10">
+            <img src="https://i.pinimg.com/736x/4c/19/ad/4c19ad8d9ee5b70d7089860966f05637.jpg" alt="น้ำเปล่า">
+            <h3>น้ำเปล่า</h3>
+            <p>ราคา: <span class="price">10.00</span> บาท</p>
+            <button onclick="addToCart(11)">เพิ่มลงตะกร้า</button>
+        </div>
+
+        <div class="menu-card" data-id="12" data-name="น้ำผลไม้ปั่น" data-price="65">
+            <img src="https://i.pinimg.com/1200x/26/32/85/263285f1f4a9c0aed9953d9e0005a7ad.jpg" alt="น้ำผลไม้ปั่น">
+            <h3>น้ำผลไม้ปั่น</h3>
+            <p>ราคา: <span class="price">65.00</span> บาท</p>
+            <button onclick="addToCart(12)">เพิ่มลงตะกร้า</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>🛒 ตะกร้าสินค้า (Your Order)</h2>
+    <div id="cart-section">
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>รายการ</th>
+                    <th>ราคา/หน่วย</th>
+                    <th>จำนวน</th>
+                    <th>รวม</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                </tbody>
+        </table>
+        
+        <h3>ยอดรวมที่ต้องชำระ: <span id="total-price">0.00</span> บาท</h3>
+        
+        <div class="checkout-actions">
+            <button onclick="checkout()">✅ ยืนยันการสั่งซื้อ</button>
+            <button onclick="clearCart()">🗑️ ล้างตะกร้า</button>
+        </div>
+    </div>
+
+    <script>
+
+/* ===== อ่านหมายเลขโต๊ะจาก QR ===== */
+const params = new URLSearchParams(window.location.search);
+const tableNumber = params.get("table") || "ไม่ระบุโต๊ะ";
+
+
+
+
+
+
+
+
+
+
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+function addToCart(id) {
+    const card = document.querySelector(`.menu-card[data-id="${id}"]`);
+    const name = card.dataset.name;
+    const price = parseFloat(card.dataset.price);
+
+    if (cart[id]) {
+        cart[id].qty++;
+    } else {
+        cart[id] = { name, price, qty: 1 };
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+function renderCart() {
+    const body = document.getElementById("cart-body");
+    const totalEl = document.getElementById("total-price");
+
+    body.innerHTML = "";
+    let total = 0;
+
+    for (let id in cart) {
+        const item = cart[id];
+        const sum = item.price * item.qty;
+        total += sum;
+
+        body.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price.toFixed(2)}</td>
+                <td>${item.qty}</td>
+                <td>${sum.toFixed(2)}</td>
+            </tr>
+        `;
+    }
+
+    totalEl.textContent = total.toFixed(2);
+}
+
+function clearCart() {
+    if (!confirm("ต้องการล้างตะกร้าหรือไม่?")) return;
+    cart = {};
+    localStorage.removeItem("cart");
+    renderCart();
+}
+
+function checkout() {
+    if (Object.keys(cart).length === 0) {
+        alert("ยังไม่มีสินค้าในตะกร้า");
+        return;
+    }
+
+    // ไปหน้าสรุปรายการ
+    window.location.href = "summary.html";
+
+}
+
+
+
+// โหลดตะกร้าเมื่อเปิดหน้า
+renderCart();
+
+
+
+document.getElementById("table-number").innerText = tableNumber;
+
+
+</script>
+</body>
+</html>

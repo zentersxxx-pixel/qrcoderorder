@@ -1,0 +1,228 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", "Prompt", sans-serif;
+    background-color: #f6f5f3;
+    color: #333;
+    line-height: 1.6;
+    padding-bottom: 60px;
+}
+
+/* ===== Header ===== */
+header {
+    background: linear-gradient(135deg, #ffffff, #f1eee9);
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 1px solid #e0ddd8;
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* ===== Section Titles ===== */
+h2 {
+    margin: 40px 20px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border-left: 4px solid #c6a664;
+    padding-left: 12px;
+}
+
+/* ===== Menu Layout ===== */
+.menu-category {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* ===== Menu Card ===== */
+.menu-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.1);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.menu-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 15px 5px;
+}
+
+.menu-card p {
+    margin: 0 15px 15px;
+    color: #666;
+}
+
+/* ===== Button ===== */
+.menu-card button {
+    width: calc(100% - 30px);
+    margin: 0 15px 20px;
+    padding: 10px;
+    background-color: #c6a664;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-card button:hover {
+    background-color: #b08f50;
+}
+
+/* ===== Cart Section ===== */
+#cart-table {
+    width: calc(100% - 40px);
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+#cart-table th,
+#cart-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+#cart-table th {
+    background-color: #f2efe9;
+    font-weight: 500;
+}
+
+#cart-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== Total ===== */
+h3 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+/* ===== Checkout Buttons ===== */
+button[onclick="checkout()"],
+button[onclick="clearCart()"] {
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 420px;
+    margin: 10px auto;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button[onclick="checkout()"] {
+    background-color: #2f2f2f;
+    color: #fff;
+}
+
+button[onclick="checkout()"]:hover {
+    background-color: #000;
+}
+
+button[onclick="clearCart()"] {
+    background-color: #e0ddd8;
+    color: #333;
+}
+
+button[onclick="clearCart()"]:hover {
+    background-color: #d0ccc6;
+}
+
+/* ===== Mobile Friendly ===== */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
+
+
+/* ===== Cart Action Buttons (Modern) ===== */
+.cart-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cart-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 22px;
+    min-width: 180px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* ปุ่มกลับ */
+.btn-back {
+    background: #f2efe9;
+    color: #333;
+}
+
+.btn-back:hover {
+    background: #e4e0d8;
+    transform: translateY(-2px);
+}
+
+/* ปุ่มยืนยัน */
+.btn-checkout {
+    background: linear-gradient(135deg, #c6a664, #b08f50);
+    color: #fff;
+}
+
+.btn-checkout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.cart-actions button:active {
+    transform: scale(0.96);
+}
