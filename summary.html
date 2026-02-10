@@ -12,6 +12,7 @@
     <h1>📋 สรุปรายการสั่งอาหาร</h1>
     <p>ตรวจสอบรายการและยอดที่ต้องชำระ</p>
 </header>
+<p>โต๊ะ: <span id="table-number">ไม่ระบุโต๊ะ</span></p>
 <nav>
   <a href="index.html">หน้าแรก</a> |
   <a href="cart.html">ตะกร้า</a> |
@@ -38,7 +39,8 @@
 </div>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || {};
+const cart = JSON.parse(localStorage.getItem("cart")) || {};
+const params = new URLSearchParams(window.location.search);
 
 function renderSummary() {
     const body = document.getElementById("cart-body");
@@ -47,68 +49,56 @@ function renderSummary() {
     body.innerHTML = "";
     let total = 0;
 
-    if (Object.keys(cart).length === 0) {
+    if (!cart || Object.keys(cart).length === 0) {
         body.innerHTML = `
             <tr>
                 <td colspan="4">ไม่มีรายการสั่งอาหาร</td>
             </tr>
         `;
+        totalEl.innerText = "0.00";
         return;
     }
 
     for (let id in cart) {
         const item = cart[id];
-        const sum = item.price * item.qty;
+        const price = Number(item.price) || 0;
+        const qty = Number(item.qty) || 0;
+        const sum = price * qty;
         total += sum;
 
-        body.innerHTML += `
+        body.insertAdjacentHTML('beforeend', `
             <tr>
                 <td>${item.name}</td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>${item.qty}</td>
+                <td>${price.toFixed(2)}</td>
+                <td>${qty}</td>
                 <td>${sum.toFixed(2)}</td>
             </tr>
-        `;
+        `);
     }
 
     totalEl.innerText = total.toFixed(2);
 }
 
 function confirmOrder() {
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
 
     orders.push({
-    id: Date.now(),
-    table: params.get("table") || "ไม่ระบุโต๊ะ",
-    items: cart,
-    status: "รอร้านรับออเดอร์"
-});
-
-    
+        id: Date.now(),
+        table: params.get("table") || "ไม่ระบุโต๊ะ",
+        items: cart,
+        total: document.getElementById("total-price").innerText,
+        status: "รอร้านรับออเดอร์",
+        createdAt: new Date().toISOString()
+    });
 
     localStorage.setItem("orders", JSON.stringify(orders));
-
-    alert("✅ ร้านอาหารได้รับออเดอร์แล้ว");
     localStorage.removeItem("cart");
+    alert("ร้านอาหารได้รับออเดอร์แล้ว");
     window.location.href = "index.html";
 }
 
+document.getElementById("table-number").innerText = params.get("table") || "ไม่ระบุโต๊ะ";
 
 renderSummary();
 
-
-const params = new URLSearchParams(window.location.search);
-document.getElementById("table-number").innerText =
-    params.get("table") || "ไม่ระบุโต๊ะ";
-
-
-
-
-
-
-
-
 </script>
-
-</body>
-</html>
